@@ -295,9 +295,12 @@ data/**
 !data/neurokg/2_enrich_kg/
 !data/mappings/
 !data/images/
+!data/paper/
 
 !data/neurokg/2_enrich_kg/roi_to_label_mapping.csv
 !data/mappings/README.md
 
 !data/images/header.png
 !data/images/figure_1a.png
+
+!data/paper/PROTON_SI_Noori_2025.pdf
