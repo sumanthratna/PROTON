@@ -4,7 +4,7 @@
 </p>
 
 [![Website](https://img.shields.io/badge/Website-000000?style=for-the-badge)](https://protonmodel.ai)
-[![Paper](https://img.shields.io/badge/Biorxiv-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org)
+[![Paper](https://img.shields.io/badge/Paper-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2512.13724)
 [![Code](https://img.shields.io/badge/Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mims-harvard/PROTON)
 [![Model](https://img.shields.io/badge/Model-FFCC00?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/ayushnoori/PROTON)
 
