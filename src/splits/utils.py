@@ -80,7 +80,7 @@ def _get_disease_embeddings(
 
     _logger.debug(f"Generating embeddings for {len(disease_names)} diseases...")
     tokenizer = AutoTokenizer.from_pretrained(conf.splits.model_name)
-    model = AutoModel.from_pretrained(conf.splits.model_name).to(TORCH_DEVICE)
+    model = AutoModel.from_pretrained(conf.splits.model_name, use_safetensors=True).to(TORCH_DEVICE)
     model.eval()
 
     all_embeds = []

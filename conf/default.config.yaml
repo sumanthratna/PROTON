@@ -148,7 +148,7 @@ wandb:
   entity_name: "ayushnoori"
 
 splits:
-  model_name: "emilyalsentzer/Bio_ClinicalBERT"
+  model_name: "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
   batch_size: 32
   embedding_threshold: 0.98
   levenshtein_threshold: 80
