@@ -79,6 +79,14 @@ cu118 = [
   "torchdata==0.9.0",
   "dgl==2.2.1; sys_platform != 'darwin' or platform_machine != 'arm64'",
 ]
+cu121 = [
+    "dgl==2.2.1 ; platform_machine != 'arm64' or sys_platform != 'darwin'",
+    "torch==2.3.0",
+    "torchaudio",
+    "torchdata==0.9.0",
+    "torchmetrics",
+    "torchvision",
+]
 
 [tool.ty.rules]
 unresolved-attribute = "ignore"
@@ -93,6 +101,7 @@ conflicts = [
   [
     { extra = "cpu" },
     { extra = "cu118" },
+    { extra = "cu121" },
   ],
 ]
 
@@ -100,10 +109,17 @@ conflicts = [
 torch = [
   { index = "pytorch-cpu", extra = "cpu" },
   { index = "pytorch-cu118", extra = "cu118" },
+  { index = "pytorch-cu121", extra = "cu121" },
 ]
 torchvision = [
   { index = "pytorch-cpu", extra = "cpu" },
   { index = "pytorch-cu118", extra = "cu118" },
+  { index = "pytorch-cu121", extra = "cu121" },
+]
+torchaudio = [
+  { index = "pytorch-cpu", extra = "cpu" },
+  { index = "pytorch-cu118", extra = "cu118" },
+  { index = "pytorch-cu121", extra = "cu121" },
 ]
 # DGL will be installed manually from source for macOS ARM64
 # Use: uv run install-dgl or make install-dgl
@@ -127,6 +143,17 @@ explicit = true
 [[tool.uv.index]]
 name = "dgl-cu118"
 url = "https://data.dgl.ai/wheels/torch-2.3/cu118/repo.html"
+format = "flat"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[[tool.uv.index]]
+name = "dgl-cu121"
+url = "https://data.dgl.ai/wheels/torch-2.3/cu121/repo.html"
 format = "flat"
 explicit = true
 

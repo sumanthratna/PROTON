@@ -2,18 +2,21 @@ version = 1
 revision = 3
 requires-python = "==3.11.*"
 resolution-markers = [
-    "sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118'",
-    "sys_platform != 'linux' and extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118'",
-    "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')",
-    "sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118'",
-    "platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118'",
-    "sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118'",
-    "sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118'",
-    "sys_platform != 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118'",
+    "sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121'",
+    "sys_platform != 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121'",
+    "sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121'",
+    "sys_platform != 'linux' and extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121'",
+    "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')",
+    "sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121'",
+    "platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121'",
+    "sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121'",
+    "sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121'",
+    "sys_platform != 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121'",
 ]
 conflicts = [[
     { package = "proton", extra = "cpu" },
     { package = "proton", extra = "cu118" },
+    { package = "proton", extra = "cu121" },
 ]]
 
 [[package]]
@@ -442,7 +445,7 @@ name = "cffi"
 version = "2.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pycparser", marker = "implementation_name != 'PyPy' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "pycparser", marker = "implementation_name != 'PyPy' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/eb/56/b1ba7935a17738ae8453301356628e8147c79dbb825bcbc73dc7401f9846/cffi-2.0.0.tar.gz", hash = "sha256:44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529", size = 523588, upload-time = "2025-09-08T23:24:04.541Z" }
 wheels = [
@@ -509,7 +512,7 @@ name = "click"
 version = "8.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz", hash = "sha256:12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a", size = 295065, upload-time = "2025-11-15T20:45:42.706Z" }
 wheels = [
@@ -1107,7 +1110,7 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "filelock" },
     { name = "fsspec" },
-    { name = "hf-xet", marker = "platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "hf-xet", marker = "platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
     { name = "packaging" },
     { name = "pyyaml" },
     { name = "requests" },
@@ -1200,7 +1203,7 @@ name = "ipykernel"
 version = "7.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "appnope", marker = "sys_platform == 'darwin' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "appnope", marker = "sys_platform == 'darwin' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
     { name = "comm" },
     { name = "debugpy" },
     { name = "ipython" },
@@ -1224,12 +1227,12 @@ name = "ipython"
 version = "9.7.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
     { name = "decorator" },
     { name = "ipython-pygments-lexers" },
     { name = "jedi" },
     { name = "matplotlib-inline" },
-    { name = "pexpect", marker = "(sys_platform != 'emscripten' and sys_platform != 'win32') or (sys_platform == 'emscripten' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'win32' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "pexpect", marker = "(sys_platform != 'emscripten' and sys_platform != 'win32') or (sys_platform == 'emscripten' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'emscripten' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'emscripten' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'win32' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'win32' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'win32' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
     { name = "prompt-toolkit" },
     { name = "pygments" },
     { name = "stack-data" },
@@ -1519,7 +1522,7 @@ dependencies = [
     { name = "overrides" },
     { name = "packaging" },
     { name = "prometheus-client" },
-    { name = "pywinpty", marker = "(os_name == 'nt' and sys_platform != 'darwin' and sys_platform != 'linux') or (os_name == 'nt' and sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (os_name != 'nt' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "pywinpty", marker = "(os_name == 'nt' and sys_platform != 'darwin' and sys_platform != 'linux') or (os_name == 'nt' and sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (os_name != 'nt' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (os_name != 'nt' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (os_name != 'nt' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
     { name = "pyzmq" },
     { name = "send2trash" },
     { name = "terminado" },
@@ -1549,7 +1552,7 @@ name = "jupyter-server-terminals"
 version = "0.5.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pywinpty", marker = "(os_name == 'nt' and sys_platform != 'darwin' and sys_platform != 'linux') or (os_name == 'nt' and sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (os_name != 'nt' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "pywinpty", marker = "(os_name == 'nt' and sys_platform != 'darwin' and sys_platform != 'linux') or (os_name == 'nt' and sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (os_name != 'nt' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (os_name != 'nt' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (os_name != 'nt' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
     { name = "terminado" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/fc/d5/562469734f476159e99a55426d697cbf8e7eb5efe89fb0e0b4f83a3d3459/jupyter_server_terminals-0.5.3.tar.gz", hash = "sha256:5ae0295167220e9ace0edcfdb212afd2b01ee8d179fe6f23c899590e9b8a5269", size = 31430, upload-time = "2024-03-12T14:37:03.049Z" }
@@ -1893,8 +1896,8 @@ name = "mkl"
 version = "2021.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "intel-openmp", marker = "(sys_platform != 'darwin' and sys_platform != 'linux') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "tbb", marker = "(sys_platform != 'darwin' and sys_platform != 'linux') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "intel-openmp", marker = "(sys_platform != 'darwin' and sys_platform != 'linux') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "tbb", marker = "(sys_platform != 'darwin' and sys_platform != 'linux') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b6/b2/b8c755092e3881d6b5ea74be49c7bf3758b6174296626aed39c3416a1b02/mkl-2021.4.0-py2.py3-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:67460f5cd7e30e405b54d70d1ed3ca78118370b65f7327d495e9c8847705e2fb", size = 186391276, upload-time = "2021-09-28T17:19:34.028Z" },
@@ -2259,7 +2262,7 @@ name = "nvidia-cudnn-cu11"
 version = "8.7.0.84"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-cublas-cu11", marker = "(sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "nvidia-cublas-cu11", marker = "(sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/f6/921e080645b9e66fbf7567b5aa1741bcded69862f42f1dce796883c3345c/nvidia_cudnn_cu11-8.7.0.84-py3-none-manylinux1_x86_64.whl", hash = "sha256:b3e062498fbbb1c1930435a6a454c1b41c903e1e65b7063bd2b4021e8285408e", size = 728455279, upload-time = "2022-11-30T00:31:11.15Z" },
@@ -2270,7 +2273,7 @@ name = "nvidia-cudnn-cu12"
 version = "8.9.2.26"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-cublas-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "nvidia-cublas-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ff/74/a2e2be7fb83aaedec84f391f082cf765dfb635e7caa9b49065f73e4835d8/nvidia_cudnn_cu12-8.9.2.26-py3-none-manylinux1_x86_64.whl", hash = "sha256:5ccb288774fdfb07a7e7025ffec286971c06d8d7b4fb162525334616d7629ff9", size = 731725872, upload-time = "2023-06-01T19:24:57.328Z" },
@@ -2321,7 +2324,7 @@ name = "nvidia-cusolver-cu11"
 version = "11.4.1.48"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-cublas-cu11", marker = "(sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "nvidia-cublas-cu11", marker = "(sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/55/ee/939ff0104991dd7bdabb4c9767994c612ba0e1c9a55672a1ddd42f5e5b16/nvidia_cusolver_cu11-11.4.1.48-py3-none-manylinux1_x86_64.whl", hash = "sha256:ca538f545645b7e6629140786d3127fe067b3d5a085bd794cde5bfe877c8926f", size = 128240842, upload-time = "2022-10-03T23:30:24.348Z" },
@@ -2335,9 +2338,9 @@ name = "nvidia-cusolver-cu12"
 version = "11.4.5.107"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-cublas-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cusparse-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "nvidia-cublas-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cusparse-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/bc/1d/8de1e5c67099015c834315e333911273a8c6aaba78923dd1d1e25fc5f217/nvidia_cusolver_cu12-11.4.5.107-py3-none-manylinux1_x86_64.whl", hash = "sha256:8a7ec542f0412294b15072fa7dab71d31334014a69f953004ea7a118206fe0dd", size = 124161928, upload-time = "2023-04-19T15:51:25.781Z" },
@@ -2360,7 +2363,7 @@ name = "nvidia-cusparse-cu12"
 version = "12.1.0.106"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/65/5b/cfaeebf25cd9fdec14338ccb16f6b2c4c7fa9163aefcf057d86b9cc248bb/nvidia_cusparse_cu12-12.1.0.106-py3-none-manylinux1_x86_64.whl", hash = "sha256:f3b50f42cf363f86ab21f720998517a659a48131e8d538dc02f8768237bd884c", size = 195958278, upload-time = "2023-04-19T15:51:49.939Z" },
@@ -2797,21 +2800,30 @@ dependencies = [
 [package.optional-dependencies]
 cpu = [
     { name = "dgl", marker = "platform_machine != 'arm64' or sys_platform != 'darwin'" },
-    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torchaudio" },
+    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torchaudio", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torchaudio", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
     { name = "torchdata" },
     { name = "torchmetrics" },
-    { name = "torchvision", version = "0.18.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torchvision", version = "0.18.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "torchvision", version = "0.18.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torchvision", version = "0.18.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 cu118 = [
     { name = "dgl", marker = "platform_machine != 'arm64' or sys_platform != 'darwin'" },
     { name = "torch", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" } },
-    { name = "torchaudio" },
+    { name = "torchaudio", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" } },
     { name = "torchdata" },
     { name = "torchmetrics" },
     { name = "torchvision", version = "0.18.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" } },
+]
+cu121 = [
+    { name = "dgl", marker = "platform_machine != 'arm64' or sys_platform != 'darwin'" },
+    { name = "torch", version = "2.3.0+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" } },
+    { name = "torchaudio", version = "2.3.0+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" } },
+    { name = "torchdata" },
+    { name = "torchmetrics" },
+    { name = "torchvision", version = "0.18.0+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" } },
 ]
 
 [package.dev-dependencies]
@@ -2828,6 +2840,7 @@ requires-dist = [
     { name = "cellxgene-census", specifier = ">=1.17.0" },
     { name = "dgl", marker = "(platform_machine != 'arm64' and extra == 'cpu') or (sys_platform != 'darwin' and extra == 'cpu')", specifier = "==2.2.1" },
     { name = "dgl", marker = "(platform_machine != 'arm64' and extra == 'cu118') or (sys_platform != 'darwin' and extra == 'cu118')", specifier = "==2.2.1" },
+    { name = "dgl", marker = "(platform_machine != 'arm64' and extra == 'cu121') or (sys_platform != 'darwin' and extra == 'cu121')", specifier = "==2.2.1" },
     { name = "fqdn", specifier = ">=1.5.1" },
     { name = "getsequence", specifier = ">=2.2.1" },
     { name = "goatools", specifier = ">=1.4.12" },
@@ -2860,22 +2873,27 @@ requires-dist = [
     { name = "tinycss2", specifier = ">=1.4.0" },
     { name = "torch", marker = "extra == 'cpu'", specifier = "==2.3.0", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "proton", extra = "cpu" } },
     { name = "torch", marker = "extra == 'cu118'", specifier = "==2.3.0", index = "https://download.pytorch.org/whl/cu118", conflict = { package = "proton", extra = "cu118" } },
-    { name = "torchaudio", marker = "extra == 'cpu'" },
-    { name = "torchaudio", marker = "extra == 'cu118'" },
+    { name = "torch", marker = "extra == 'cu121'", specifier = "==2.3.0", index = "https://download.pytorch.org/whl/cu121", conflict = { package = "proton", extra = "cu121" } },
+    { name = "torchaudio", marker = "extra == 'cpu'", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "proton", extra = "cpu" } },
+    { name = "torchaudio", marker = "extra == 'cu118'", index = "https://download.pytorch.org/whl/cu118", conflict = { package = "proton", extra = "cu118" } },
+    { name = "torchaudio", marker = "extra == 'cu121'", index = "https://download.pytorch.org/whl/cu121", conflict = { package = "proton", extra = "cu121" } },
     { name = "torchdata", specifier = "==0.9.0" },
     { name = "torchdata", marker = "extra == 'cpu'", specifier = "==0.9.0" },
     { name = "torchdata", marker = "extra == 'cu118'", specifier = "==0.9.0" },
+    { name = "torchdata", marker = "extra == 'cu121'", specifier = "==0.9.0" },
     { name = "torchmetrics", marker = "extra == 'cpu'" },
     { name = "torchmetrics", marker = "extra == 'cu118'" },
+    { name = "torchmetrics", marker = "extra == 'cu121'" },
     { name = "torchvision", marker = "extra == 'cpu'", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "proton", extra = "cpu" } },
     { name = "torchvision", marker = "extra == 'cu118'", index = "https://download.pytorch.org/whl/cu118", conflict = { package = "proton", extra = "cu118" } },
+    { name = "torchvision", marker = "extra == 'cu121'", index = "https://download.pytorch.org/whl/cu121", conflict = { package = "proton", extra = "cu121" } },
     { name = "transformers", specifier = ">=4.57.0" },
     { name = "typer", specifier = ">=0.16.1" },
     { name = "uri-template", specifier = ">=1.3.0" },
     { name = "wandb", specifier = ">=0.22.2" },
     { name = "webcolors", specifier = ">=24.11.1" },
 ]
-provides-extras = ["cpu", "cu118"]
+provides-extras = ["cpu", "cu118", "cu121"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -3055,7 +3073,7 @@ name = "pympler"
 version = "1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pywin32", marker = "sys_platform == 'win32' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "pywin32", marker = "sys_platform == 'win32' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/dd/37/c384631908029676d8e7213dd956bb686af303a80db7afbc9be36bc49495/pympler-1.1.tar.gz", hash = "sha256:1eaa867cb8992c218430f1708fdaccda53df064144d1c5656b1e6f1ee6000424", size = 179954, upload-time = "2024-06-28T19:56:06.563Z" }
 wheels = [
@@ -3147,10 +3165,11 @@ dependencies = [
     { name = "lightning-utilities" },
     { name = "packaging" },
     { name = "pyyaml" },
-    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" }, marker = "extra == 'extra-6-proton-cu118'" },
+    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" }, marker = "extra == 'extra-6-proton-cu118' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" }, marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
     { name = "torchmetrics" },
     { name = "tqdm" },
     { name = "typing-extensions" },
@@ -3210,7 +3229,7 @@ name = "pyzmq"
 version = "27.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cffi", marker = "implementation_name == 'pypy' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "cffi", marker = "implementation_name == 'pypy' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/04/0b/3c9baedbdf613ecaa7aa07027780b8867f57b6293b6ee50de316c9f3222b/pyzmq-27.1.0.tar.gz", hash = "sha256:ac0765e3d44455adb6ddbf4417dcce460fc40a05978c08efdf2948072f6db540", size = 281750, upload-time = "2025-09-08T23:10:18.157Z" }
 wheels = [
@@ -3776,8 +3795,8 @@ name = "terminado"
 version = "0.18.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "ptyprocess", marker = "os_name != 'nt' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "pywinpty", marker = "(os_name == 'nt' and sys_platform != 'darwin' and sys_platform != 'linux') or (os_name == 'nt' and sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (os_name != 'nt' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "ptyprocess", marker = "os_name != 'nt' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "pywinpty", marker = "(os_name == 'nt' and sys_platform != 'darwin' and sys_platform != 'linux') or (os_name == 'nt' and sys_platform == 'darwin' and extra != 'extra-6-proton-cpu') or (os_name != 'nt' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (os_name != 'nt' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (os_name != 'nt' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
     { name = "tornado" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/8a/11/965c6fd8e5cc254f1fe142d547387da17a8ebfd75a3455f637c663fb38a0/terminado-0.18.1.tar.gz", hash = "sha256:de09f2c4b85de4765f7714688fff57d3e75bad1f909b589fde880460c753fd2e", size = 32701, upload-time = "2024-03-12T14:34:39.026Z" }
@@ -3892,12 +3911,12 @@ resolution-markers = [
     "sys_platform == 'darwin'",
 ]
 dependencies = [
-    { name = "filelock", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "fsspec", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "jinja2", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "networkx", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "sympy", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "typing-extensions", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "filelock", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "fsspec", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "jinja2", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "networkx", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "sympy", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "typing-extensions", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://download.pytorch.org/whl/cpu/torch-2.3.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:147992d3af01e3f2a772a68877e8937989e57c4225b82a4989d3cd9582c8bcd1" },
@@ -3913,24 +3932,24 @@ resolution-markers = [
     "sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "filelock", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')" },
-    { name = "fsspec", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')" },
-    { name = "jinja2", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')" },
-    { name = "mkl", marker = "(sys_platform == 'win32' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "networkx", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')" },
-    { name = "nvidia-cublas-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cuda-cupti-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cuda-nvrtc-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cuda-runtime-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cudnn-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cufft-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-curand-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cusolver-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cusparse-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-nvtx-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "sympy", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')" },
-    { name = "typing-extensions", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')" },
+    { name = "filelock", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')" },
+    { name = "fsspec", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')" },
+    { name = "jinja2", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')" },
+    { name = "mkl", marker = "(sys_platform == 'win32' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "networkx", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')" },
+    { name = "nvidia-cublas-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cuda-cupti-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cuda-nvrtc-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cuda-runtime-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cudnn-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cufft-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-curand-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cusolver-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cusparse-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-nvtx-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "sympy", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')" },
+    { name = "typing-extensions", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/35/3a/a39f354fa3119785be87e2f94ffa2620f8a270c8560f7356358ee62fb4c5/torch-2.3.0-cp311-cp311-manylinux1_x86_64.whl", hash = "sha256:493d54ee2f9df100b5ce1d18c96dbb8d14908721f76351e908c9d2622773a788", size = 779160265, upload-time = "2024-04-24T15:46:28.108Z" },
@@ -3948,13 +3967,13 @@ resolution-markers = [
     "sys_platform != 'darwin' and sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "filelock", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "fsspec", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "jinja2", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "mkl", marker = "(sys_platform == 'win32' and extra == 'extra-6-proton-cpu') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "networkx", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "sympy", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "typing-extensions", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "filelock", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "fsspec", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "jinja2", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "mkl", marker = "(sys_platform == 'win32' and extra == 'extra-6-proton-cpu') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "networkx", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "sympy", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "typing-extensions", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://download.pytorch.org/whl/cpu/torch-2.3.0%2Bcpu-cp311-cp311-linux_x86_64.whl", hash = "sha256:97a38b25ee0e3d020691e7846efbca62a3d8a57645c027dcb5ba0adfec36fe55" },
@@ -3970,25 +3989,25 @@ resolution-markers = [
     "sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "filelock", marker = "extra == 'extra-6-proton-cu118'" },
-    { name = "fsspec", marker = "extra == 'extra-6-proton-cu118'" },
-    { name = "jinja2", marker = "extra == 'extra-6-proton-cu118'" },
-    { name = "mkl", marker = "(sys_platform == 'win32' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "networkx", marker = "extra == 'extra-6-proton-cu118'" },
-    { name = "nvidia-cublas-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cuda-cupti-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cuda-nvrtc-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cuda-runtime-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cudnn-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cufft-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-curand-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cusolver-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-cusparse-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-nccl-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "nvidia-nvtx-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "sympy", marker = "extra == 'extra-6-proton-cu118'" },
-    { name = "triton", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "typing-extensions", marker = "extra == 'extra-6-proton-cu118'" },
+    { name = "filelock", marker = "extra == 'extra-6-proton-cu118' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "fsspec", marker = "extra == 'extra-6-proton-cu118' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "jinja2", marker = "extra == 'extra-6-proton-cu118' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "mkl", marker = "(sys_platform == 'win32' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "networkx", marker = "extra == 'extra-6-proton-cu118' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cublas-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cuda-cupti-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cuda-nvrtc-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cuda-runtime-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cudnn-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cufft-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-curand-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cusolver-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cusparse-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-nccl-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-nvtx-cu11", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "sympy", marker = "extra == 'extra-6-proton-cu118' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "triton", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "typing-extensions", marker = "extra == 'extra-6-proton-cu118' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://download.pytorch.org/whl/cu118/torch-2.3.0%2Bcu118-cp311-cp311-linux_x86_64.whl", hash = "sha256:4888984f292c2dfa12e49b951356c692a096a9c4790efab7fdbfc8db8cd8f13f" },
@@ -3996,19 +4015,101 @@ wheels = [
 ]
 
 [[package]]
-name = "torchaudio"
-version = "2.3.0"
-source = { registry = "https://pypi.org/simple" }
+name = "torch"
+version = "2.3.0+cu121"
+source = { registry = "https://download.pytorch.org/whl/cu121" }
+resolution-markers = [
+    "sys_platform == 'linux'",
+    "sys_platform != 'linux'",
+]
 dependencies = [
-    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" }, marker = "extra == 'extra-6-proton-cu118'" },
+    { name = "filelock", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "fsspec", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "jinja2", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "mkl", marker = "(sys_platform == 'win32' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "networkx", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cublas-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cuda-cupti-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cuda-nvrtc-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cuda-runtime-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cudnn-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cufft-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-curand-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cusolver-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-cusparse-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "nvidia-nvtx-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "sympy", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "triton", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (platform_machine != 'x86_64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "typing-extensions", marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/51/c8/2034c6a6b203fe79c9df8d8e018bfac989cd718be4b0c36940e1fc691fd0/torchaudio-2.3.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:341ca3048ce6edcc731519b30187f0b13acb245c4efe16f925f69f9d533546e1", size = 1816858, upload-time = "2024-04-24T15:49:05.122Z" },
-    { url = "https://files.pythonhosted.org/packages/51/9e/3b31f93a56d32f10db44bad3236a834c9e57fab66a9c6e5149ea666bb927/torchaudio-2.3.0-cp311-cp311-manylinux1_x86_64.whl", hash = "sha256:8f2e0a28740bb0ee66369f92c811f33c0a47e6fcfc2de9cee89746472d713906", size = 3355687, upload-time = "2024-04-24T15:48:50.836Z" },
-    { url = "https://files.pythonhosted.org/packages/ac/a7/24b7245c06ad36200c3ca034a8820fb2cca43946b4f9ed27331d59b68600/torchaudio-2.3.0-cp311-cp311-manylinux2014_aarch64.whl", hash = "sha256:61edb02ae9c0efea4399f9c1f899601136b24f35d430548284ea8eaf6ccbe3be", size = 1651750, upload-time = "2024-04-24T15:49:02.932Z" },
-    { url = "https://files.pythonhosted.org/packages/5d/35/8100a33b616292662de330b2cca2c121d798aece4dad59571156b8cffd33/torchaudio-2.3.0-cp311-cp311-win_amd64.whl", hash = "sha256:04bc960cf1aef3b469b095a432a25496bc28197850fc2d90b7b52d6b5255487b", size = 2368752, upload-time = "2024-04-24T15:48:55.395Z" },
+    { url = "https://download.pytorch.org/whl/cu121/torch-2.3.0%2Bcu121-cp311-cp311-linux_x86_64.whl", hash = "sha256:5df7e3cb3961018a891e4edef1e0bc1f3304a8d943f81b24a8c6bf687ca49a67" },
+    { url = "https://download.pytorch.org/whl/cu121/torch-2.3.0%2Bcu121-cp311-cp311-win_amd64.whl", hash = "sha256:f7876ec20b42dd569e7a11c5af36febccc03830f63dfdedbd4026506e086cab6" },
+]
+
+[[package]]
+name = "torchaudio"
+version = "2.3.0"
+source = { registry = "https://download.pytorch.org/whl/cpu" }
+resolution-markers = [
+    "platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
+    "sys_platform == 'darwin'",
+]
+dependencies = [
+    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or sys_platform == 'darwin'" },
+]
+wheels = [
+    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.3.0-cp311-cp311-linux_aarch64.whl", hash = "sha256:61edb02ae9c0efea4399f9c1f899601136b24f35d430548284ea8eaf6ccbe3be" },
+    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.3.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:341ca3048ce6edcc731519b30187f0b13acb245c4efe16f925f69f9d533546e1" },
+]
+
+[[package]]
+name = "torchaudio"
+version = "2.3.0+cpu"
+source = { registry = "https://download.pytorch.org/whl/cpu" }
+resolution-markers = [
+    "(platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux')",
+    "sys_platform != 'darwin' and sys_platform != 'linux'",
+]
+dependencies = [
+    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'linux')" },
+]
+wheels = [
+    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.3.0%2Bcpu-cp311-cp311-linux_x86_64.whl", hash = "sha256:2cbf497e48b5e80c12861d2f1d40ae035eb6c1aabda6264a547e11ee8c6dff60" },
+    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.3.0%2Bcpu-cp311-cp311-win_amd64.whl", hash = "sha256:8d4eb6acc3e2039ee63b085c23fe193e8b32c09beb360c49b9d25c26a8455b22" },
+]
+
+[[package]]
+name = "torchaudio"
+version = "2.3.0+cu118"
+source = { registry = "https://download.pytorch.org/whl/cu118" }
+resolution-markers = [
+    "sys_platform == 'linux'",
+    "sys_platform != 'linux'",
+]
+dependencies = [
+    { name = "torch", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" } },
+]
+wheels = [
+    { url = "https://download.pytorch.org/whl/cu118/torchaudio-2.3.0%2Bcu118-cp311-cp311-linux_x86_64.whl", hash = "sha256:c0f008180e0f3d12ad92c37592d2a5c7d297d2339eb2d839c10cc064699be486" },
+    { url = "https://download.pytorch.org/whl/cu118/torchaudio-2.3.0%2Bcu118-cp311-cp311-win_amd64.whl", hash = "sha256:aa7dc82c74642a08aa9d07ddfa414b64a3e16d2b153f5de8be3d4b7cd039779e" },
+]
+
+[[package]]
+name = "torchaudio"
+version = "2.3.0+cu121"
+source = { registry = "https://download.pytorch.org/whl/cu121" }
+resolution-markers = [
+    "sys_platform == 'linux'",
+    "sys_platform != 'linux'",
+]
+dependencies = [
+    { name = "torch", version = "2.3.0+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" } },
+]
+wheels = [
+    { url = "https://download.pytorch.org/whl/cu121/torchaudio-2.3.0%2Bcu121-cp311-cp311-linux_x86_64.whl", hash = "sha256:8dd66913e7b08c63c76b21b0706130c24aee4ed4adc0bc12f8d62df98b5c6ea0" },
+    { url = "https://download.pytorch.org/whl/cu121/torchaudio-2.3.0%2Bcu121-cp311-cp311-win_amd64.whl", hash = "sha256:a6881a8e1b55a9b8f80d2e23547f9ceeb49bc019fbce9a4da943c9590ad724ab" },
 ]
 
 [[package]]
@@ -4017,10 +4118,11 @@ version = "0.9.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "requests" },
-    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" }, marker = "extra == 'extra-6-proton-cu118'" },
+    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" }, marker = "extra == 'extra-6-proton-cu118' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" }, marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
     { name = "urllib3" },
 ]
 wheels = [
@@ -4037,10 +4139,11 @@ dependencies = [
     { name = "lightning-utilities" },
     { name = "numpy" },
     { name = "packaging" },
-    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
-    { name = "torch", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" }, marker = "extra == 'extra-6-proton-cu118'" },
+    { name = "torch", version = "2.3.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_machine != 'aarch64' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform != 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform != 'linux' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra != 'extra-6-proton-cu118' and extra != 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-6-proton-cpu') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (sys_platform == 'darwin' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cu118", source = { registry = "https://download.pytorch.org/whl/cu118" }, marker = "extra == 'extra-6-proton-cu118' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
+    { name = "torch", version = "2.3.0+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" }, marker = "(extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra != 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121') or (extra != 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/85/2e/48a887a59ecc4a10ce9e8b35b3e3c5cef29d902c4eac143378526e7485cb/torchmetrics-1.8.2.tar.gz", hash = "sha256:cf64a901036bf107f17a524009eea7781c9c5315d130713aeca5747a686fe7a5", size = 580679, upload-time = "2025-09-03T14:00:54.077Z" }
 wheels = [
@@ -4102,6 +4205,24 @@ wheels = [
 ]
 
 [[package]]
+name = "torchvision"
+version = "0.18.0+cu121"
+source = { registry = "https://download.pytorch.org/whl/cu121" }
+resolution-markers = [
+    "sys_platform == 'linux'",
+    "sys_platform != 'linux'",
+]
+dependencies = [
+    { name = "numpy" },
+    { name = "pillow" },
+    { name = "torch", version = "2.3.0+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" } },
+]
+wheels = [
+    { url = "https://download.pytorch.org/whl/cu121/torchvision-0.18.0%2Bcu121-cp311-cp311-linux_x86_64.whl", hash = "sha256:1e516779520fc92157d6cb245ac0fd3f79872fe81c84b8593a8f2e998106f5b1" },
+    { url = "https://download.pytorch.org/whl/cu121/torchvision-0.18.0%2Bcu121-cp311-cp311-win_amd64.whl", hash = "sha256:3e5557512ec9a31a6ce33a1107827427ef50ad65e88cd35012161d7392ef144b" },
+]
+
+[[package]]
 name = "tornado"
 version = "6.5.2"
 source = { registry = "https://pypi.org/simple" }
@@ -4159,7 +4280,7 @@ name = "tqdm"
 version = "4.67.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a8/4b/29b4ef32e036bb34e4ab51796dd745cdba7ed47ad142a9f4a1eb8e0c744d/tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2", size = 169737, upload-time = "2024-11-24T20:12:22.481Z" }
 wheels = [
@@ -4177,7 +4298,7 @@ wheels = [
 
 [[package]]
 name = "transformers"
-version = "4.57.1"
+version = "4.57.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "filelock" },
@@ -4191,9 +4312,9 @@ dependencies = [
     { name = "tokenizers" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d6/68/a39307bcc4116a30b2106f2e689130a48de8bd8a1e635b5e1030e46fcd9e/transformers-4.57.1.tar.gz", hash = "sha256:f06c837959196c75039809636cd964b959f6604b75b8eeec6fdfc0440b89cc55", size = 10142511, upload-time = "2025-10-14T15:39:26.18Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/dd/70/d42a739e8dfde3d92bb2fff5819cbf331fe9657323221e79415cd5eb65ee/transformers-4.57.3.tar.gz", hash = "sha256:df4945029aaddd7c09eec5cad851f30662f8bd1746721b34cc031d70c65afebc", size = 10139680, upload-time = "2025-11-25T15:51:30.139Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/71/d3/c16c3b3cf7655a67db1144da94b021c200ac1303f82428f2beef6c2e72bb/transformers-4.57.1-py3-none-any.whl", hash = "sha256:b10d05da8fa67dc41644dbbf9bc45a44cb86ae33da6f9295f5fbf5b7890bd267", size = 11990925, upload-time = "2025-10-14T15:39:23.085Z" },
+    { url = "https://files.pythonhosted.org/packages/6a/6b/2f416568b3c4c91c96e5a365d164f8a4a4a88030aa8ab4644181fdadce97/transformers-4.57.3-py3-none-any.whl", hash = "sha256:c77d353a4851b1880191603d36acb313411d3577f6e2897814f333841f7003f4", size = 11993463, upload-time = "2025-11-25T15:51:26.493Z" },
 ]
 
 [[package]]
@@ -4201,7 +4322,7 @@ name = "triton"
 version = "2.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "filelock", marker = "(sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118')" },
+    { name = "filelock", marker = "(sys_platform == 'linux' and extra == 'extra-6-proton-cu118') or (sys_platform == 'linux' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu118') or (extra == 'extra-6-proton-cpu' and extra == 'extra-6-proton-cu121') or (extra == 'extra-6-proton-cu118' and extra == 'extra-6-proton-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3c/00/84e0006f2025260fa111ddfc66194bd1af731b3ee18e2fd611a00f290b5e/triton-2.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3c3d9607f85103afdb279938fc1dd2a66e4f5999a58eb48a346bd42738f986dd", size = 168079300, upload-time = "2024-04-05T02:47:52.164Z" },

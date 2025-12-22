@@ -21,8 +21,8 @@ install: ##@ Create the virtual environment and install the pre-commit hooks
 	@uv sync
 	@echo "Checking for CUDA availability..."
 	@uv run python -c "import torch; exit(0 if torch.cuda.is_available() else 1)" 2>/dev/null && \
-		(echo "CUDA is available. Installing DGL with CUDA support..." && \
-		 uv pip install dgl -f https://data.dgl.ai/wheels/torch-2.3/cu118/repo.html) || \
+		(echo "CUDA is available. Installing DGL with CUDA 12.1 support..." && \
+		 uv pip install dgl -f https://data.dgl.ai/wheels/torch-2.3/cu121/repo.html) || \
 		(echo "CUDA is not available. Syncing with CPU extras..." && \
 		 if [ "$$(uname -s)" = "Linux" ]; then \
 		 	echo "Linux detected. Installing DGL via pip..." && \
