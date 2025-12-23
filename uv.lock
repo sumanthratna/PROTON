@@ -695,15 +695,6 @@ wheels = [
 ]
 
 [[package]]
-name = "docopt-ng"
-version = "0.9.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/e4/50/8d6806cf13138127692ae6ff79ddeb4e25eb3b0bcc3c1bd033e7e04531a9/docopt_ng-0.9.0.tar.gz", hash = "sha256:91c6da10b5bb6f2e9e25345829fb8278c78af019f6fc40887ad49b060483b1d7", size = 32264, upload-time = "2023-05-30T20:46:25.064Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/6c/4a/c3b77fc1a24510b08918b43a473410c0168f6e657118807015f1f1edceea/docopt_ng-0.9.0-py3-none-any.whl", hash = "sha256:bfe4c8b03f9fca424c24ee0b4ffa84bf7391cb18c29ce0f6a8227a3b01b81ff9", size = 16689, upload-time = "2023-05-30T20:46:45.294Z" },
-]
-
-[[package]]
 name = "docstring-parser"
 version = "0.17.0"
 source = { registry = "https://pypi.org/simple" }
@@ -749,6 +740,19 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/20/b5/23b216d9d985a956623b6bd12d4086b60f0059b27799f23016af04a74ea1/fastjsonschema-2.21.2.tar.gz", hash = "sha256:b1eb43748041c880796cd077f1a07c3d94e93ae84bba5ed36800a33554ae05de", size = 374130, upload-time = "2025-08-14T18:49:36.666Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/cb/a8/20d0723294217e47de6d9e2e40fd4a9d2f7c4b6ef974babd482a59743694/fastjsonschema-2.21.2-py3-none-any.whl", hash = "sha256:1c797122d0a86c5cace2e54bf4e819c36223b552017172f32c5c024a6b77e463", size = 24024, upload-time = "2025-08-14T18:49:34.776Z" },
+]
+
+[[package]]
+name = "fastobo"
+version = "0.14.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ab/13/2a6ce2349549ac365f6b808e8c7e47922d0e0ac5dfb9eb6df83ca40b8119/fastobo-0.14.1.tar.gz", hash = "sha256:a230d780581332d041db29299f6c1b960b0228285d8de9981364540c14d069bc", size = 1731564, upload-time = "2025-10-25T16:44:29.73Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/23/70/22a699d445ed992ed7f4365c05483b55549b79e6ea1f288d1b80512e1f2b/fastobo-0.14.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:50f3951f1336734d7e2d74209d84dc1fff98d2cce6cf1305b4c3f2bc22217bc9", size = 2093628, upload-time = "2025-10-25T16:43:33.106Z" },
+    { url = "https://files.pythonhosted.org/packages/2d/16/e6ffce7a862791f9aa100c954ca06138251a5fd53ed979ef668e003125a5/fastobo-0.14.1-cp311-cp311-macosx_12_0_x86_64.whl", hash = "sha256:190b58570660967fd17589e9bb2c5554b448a94926131781c6021c8ca80e15cb", size = 2243247, upload-time = "2025-10-25T16:43:34.912Z" },
+    { url = "https://files.pythonhosted.org/packages/fd/38/267047fc1e2e69d2b36c02b93d49fd2e69771a94e81788b5241606c9e876/fastobo-0.14.1-cp311-cp311-manylinux_2_28_aarch64.whl", hash = "sha256:524c0c5cc952f44f99e0f9e279a8fb51efcf7aa814ecc35f3087779a555a06ad", size = 2203085, upload-time = "2025-10-25T16:43:36.618Z" },
+    { url = "https://files.pythonhosted.org/packages/bd/3d/b588a291ee7e7533aa9007e6c5b9be09ed3697a93e5325b1e7261e10e622/fastobo-0.14.1-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:e6afc03907e32072655bc73f2f3305ecabc220c3b6d2cbcffea54c5590ad1799", size = 2288269, upload-time = "2025-10-25T16:43:38.228Z" },
+    { url = "https://files.pythonhosted.org/packages/ad/c6/033b94bfd43014ca16ed52e352869c23e35cff1fd3930695605ef10dc523/fastobo-0.14.1-cp311-cp311-win_amd64.whl", hash = "sha256:7f646f3de5e2ff55435009119db42526f135b495eb81d7803a8999dc8adf2718", size = 2150441, upload-time = "2025-10-25T16:43:39.61Z" },
 ]
 
 [[package]]
@@ -915,18 +919,6 @@ http = [
 ]
 
 [[package]]
-name = "ftpretty"
-version = "0.4.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "python-dateutil" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/a2/c5/f5ed409312f67697bf7967cd52ed74794ccb860fec29d2105470c987de09/ftpretty-0.4.0.tar.gz", hash = "sha256:61233b9212f2cceec96ee2c972738fa31cae7248e92d0874c99c04ee739bb5a9", size = 9068, upload-time = "2021-06-12T17:45:20.038Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9b/d1/cbd3736da8d6253da85838b105b97bc794965584243711fa2ef0bb585df3/ftpretty-0.4.0-py2.py3-none-any.whl", hash = "sha256:1c0c45bacf69b82827838ae9b77a66e48064d2686649628e647965a85aa7367a", size = 8180, upload-time = "2021-06-12T17:45:18.349Z" },
-]
-
-[[package]]
 name = "getsequence"
 version = "2.2.1"
 source = { registry = "https://pypi.org/simple" }
@@ -962,29 +954,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/9a/c8/dd58967d119baab745caec2f9d853297cec1989ec1d63f677d3880632b88/gitpython-3.1.45.tar.gz", hash = "sha256:85b0ee964ceddf211c41b9f27a49086010a190fd8132a24e21f362a4b36a791c", size = 215076, upload-time = "2025-07-24T03:45:54.871Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/01/61/d4b89fec821f72385526e1b9d9a3a0385dda4a72b206d28049e2c7cd39b8/gitpython-3.1.45-py3-none-any.whl", hash = "sha256:8908cb2e02fb3b93b7eb0f2827125cb699869470432cc885f019b8fd0fccff77", size = 208168, upload-time = "2025-07-24T03:45:52.517Z" },
-]
-
-[[package]]
-name = "goatools"
-version = "1.5.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "docopt-ng" },
-    { name = "ftpretty" },
-    { name = "numpy" },
-    { name = "openpyxl" },
-    { name = "pandas" },
-    { name = "pydot" },
-    { name = "requests" },
-    { name = "rich" },
-    { name = "scipy" },
-    { name = "setuptools" },
-    { name = "statsmodels" },
-    { name = "xlsxwriter" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/9d/da/4369da7b0aa00ccc59e405dc54fa6ec6f0be92020c8031d247bc50d78ffc/goatools-1.5.2.tar.gz", hash = "sha256:44a0d63a25ca65156b58eba2d6134f64e8223451a01b95d2b2bb0eb603a07303", size = 15092204, upload-time = "2025-09-14T00:09:15.087Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c3/0a/f2c3fd69961ea0b9bac796e43a29f283771d20119f09186e7d5f5c8e2ab6/goatools-1.5.2-py3-none-any.whl", hash = "sha256:12e919d951a4e1fbbfa6ac73234c55993744802034ea461e5931a3898b77aa46", size = 15764780, upload-time = "2025-09-14T00:08:50.983Z" },
 ]
 
 [[package]]
@@ -2932,6 +2901,21 @@ wheels = [
 ]
 
 [[package]]
+name = "pronto"
+version = "2.7.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "chardet" },
+    { name = "fastobo" },
+    { name = "networkx" },
+    { name = "python-dateutil" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/eb/9d/1d5f94ad60b05086c13d211c812684a17f1a61a289da683a62d3182e41ab/pronto-2.7.2.tar.gz", hash = "sha256:ba3a07d4d84f71deb56ff4dea987ea513c21ad9c3ce172375647ff2471982b36", size = 63108, upload-time = "2025-11-10T12:45:44.222Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cb/79/217ae7eb2462ef254aab95b3610d85105a86f4ec8b43863788e32c0d5369/pronto-2.7.2-py3-none-any.whl", hash = "sha256:9c4b037ae1f9598398f38a55306eb1af7c3cdf8be7d535925500b978b32d1450", size = 62212, upload-time = "2025-11-10T12:45:42.969Z" },
+]
+
+[[package]]
 name = "propcache"
 version = "0.4.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2985,7 +2969,6 @@ dependencies = [
     { name = "cellxgene-census" },
     { name = "fqdn" },
     { name = "getsequence" },
-    { name = "goatools" },
     { name = "gseapy" },
     { name = "igraph" },
     { name = "isoduration" },
@@ -3003,6 +2986,7 @@ dependencies = [
     { name = "openpyxl" },
     { name = "polars" },
     { name = "pqapi" },
+    { name = "pronto" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
     { name = "python-dotenv" },
@@ -3069,7 +3053,6 @@ requires-dist = [
     { name = "dgl", marker = "(platform_machine != 'arm64' and extra == 'cu121') or (sys_platform != 'darwin' and extra == 'cu121')", specifier = "==2.2.1" },
     { name = "fqdn", specifier = ">=1.5.1" },
     { name = "getsequence", specifier = ">=2.2.1" },
-    { name = "goatools", specifier = ">=1.4.12" },
     { name = "gseapy", specifier = ">=1.1.10" },
     { name = "igraph", specifier = ">=1.0.0" },
     { name = "isoduration", specifier = ">=20.11.0" },
@@ -3087,6 +3070,7 @@ requires-dist = [
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "polars" },
     { name = "pqapi", specifier = ">=7.4.0" },
+    { name = "pronto", specifier = ">=2.7.2" },
     { name = "pydantic", specifier = ">=2.11.7" },
     { name = "pydantic-settings", specifier = ">=2.10.1" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
@@ -3294,18 +3278,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/43/4b/ac7e0aae12027748076d72a8764ff1c9d82ca75a7a52622e67ed3f765c54/pydantic_settings-2.12.0.tar.gz", hash = "sha256:005538ef951e3c2a68e1c08b292b5f2e71490def8589d4221b95dab00dafcfd0", size = 194184, upload-time = "2025-11-10T14:25:47.013Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c1/60/5d4751ba3f4a40a6891f24eec885f51afd78d208498268c734e256fb13c4/pydantic_settings-2.12.0-py3-none-any.whl", hash = "sha256:fddb9fd99a5b18da837b29710391e945b1e30c135477f484084ee513adb93809", size = 51880, upload-time = "2025-11-10T14:25:45.546Z" },
-]
-
-[[package]]
-name = "pydot"
-version = "4.0.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "pyparsing" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/50/35/b17cb89ff865484c6a20ef46bf9d95a5f07328292578de0b295f4a6beec2/pydot-4.0.1.tar.gz", hash = "sha256:c2148f681c4a33e08bf0e26a9e5f8e4099a82e0e2a068098f32ce86577364ad5", size = 162594, upload-time = "2025-06-17T20:09:56.454Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/7e/32/a7125fb28c4261a627f999d5fb4afff25b523800faed2c30979949d6facd/pydot-4.0.1-py3-none-any.whl", hash = "sha256:869c0efadd2708c0be1f916eb669f3d664ca684bc57ffb7ecc08e70d5e93fee6", size = 37087, upload-time = "2025-06-17T20:09:55.25Z" },
 ]
 
 [[package]]
@@ -4895,15 +4867,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/83/88/16b7231ba49861b6f75fc309b11012ede4d6b0a9c90969d9e0db8d991aeb/wrapt-1.17.3-cp311-cp311-win_amd64.whl", hash = "sha256:0b1831115c97f0663cb77aa27d381237e73ad4f721391a9bfb2fe8bc25fa6e77", size = 38745, upload-time = "2025-08-12T05:53:02.885Z" },
     { url = "https://files.pythonhosted.org/packages/9a/1e/c4d4f3398ec073012c51d1c8d87f715f56765444e1a4b11e5180577b7e6e/wrapt-1.17.3-cp311-cp311-win_arm64.whl", hash = "sha256:5a7b3c1ee8265eb4c8f1b7d29943f195c00673f5ab60c192eba2d4a7eae5f46a", size = 36806, upload-time = "2025-08-12T05:52:53.368Z" },
     { url = "https://files.pythonhosted.org/packages/1f/f6/a933bd70f98e9cf3e08167fc5cd7aaaca49147e48411c0bd5ae701bb2194/wrapt-1.17.3-py3-none-any.whl", hash = "sha256:7171ae35d2c33d326ac19dd8facb1e82e5fd04ef8c6c0e394d7af55a55051c22", size = 23591, upload-time = "2025-08-12T05:53:20.674Z" },
-]
-
-[[package]]
-name = "xlsxwriter"
-version = "3.2.9"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/46/2c/c06ef49dc36e7954e55b802a8b231770d286a9758b3d936bd1e04ce5ba88/xlsxwriter-3.2.9.tar.gz", hash = "sha256:254b1c37a368c444eac6e2f867405cc9e461b0ed97a3233b2ac1e574efb4140c", size = 215940, upload-time = "2025-09-16T00:16:21.63Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/3a/0c/3662f4a66880196a590b202f0db82d919dd2f89e99a27fadef91c4a33d41/xlsxwriter-3.2.9-py3-none-any.whl", hash = "sha256:9a5db42bc5dff014806c58a20b9eae7322a134abb6fce3c92c181bfb275ec5b3", size = 175315, upload-time = "2025-09-16T00:16:20.108Z" },
 ]
 
 [[package]]

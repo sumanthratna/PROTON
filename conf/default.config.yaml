@@ -145,7 +145,7 @@ wandb:
   pretrain_project_name: "proton-pretraining"
   splits_project_name: "proton-disease-splits"
   finetune_project_name: "proton-finetuning"
-  entity_name: "ayushnoori"
+  entity_name: "sumanthratna"
 
 splits:
   model_name: "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
@@ -217,8 +217,8 @@ finetune:
   random_baseline: false
 
 sweep:
-  wandb_path: "ayushnoori/proton-pretraining/sweeps/kxvnsxxu"
-  wandb_runs_path: "ayushnoori/proton-pretraining/runs"
+  wandb_path: "sumanthratna/proton-pretraining/sweeps/kxvnsxxu"
+  wandb_runs_path: "sumanthratna/proton-pretraining/runs"
 
 misc_figures:
   seed_indices:

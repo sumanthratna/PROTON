@@ -203,3 +203,53 @@ def random_walks(
     from src.baselines import perform_random_walks
 
     perform_random_walks(nodes_file, edges_file, start, length, num_walks)
+
+
+def _download_file(url: str, target_path: Path, description: str) -> None:
+    """Download a file from a URL to the target path."""
+    _logger.info("Downloading %s from %s...", description, url)
+    request = Request(url, headers=DEFAULT_HEADERS)  # noqa: S310
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with urlopen(request) as response, open(target_path, "wb") as out_file:  # noqa: S310
+        out_file.write(response.read())
+
+    _logger.info("Successfully saved %s to %s", description, target_path)
+
+
+def _validate_mondo_obo(path: Path) -> bool:
+    """Check if mondo.obo contains MONDO IDs (not GO IDs)."""
+    if not path.exists():
+        return False
+    with open(path, encoding="utf-8") as f:
+        header = f.read(2000)
+    # Check if it's Gene Ontology instead of MONDO
+    return not ("gene_ontology" in header or "id: GO:" in header)
+
+
+@cli.command("download-mondo")
+def download_mondo(
+    force: bool = typer.Option(False, "--force", "-f", help="Force re-download even if files exist"),
+) -> None:
+    """Download MONDO ontology and MONDO-EFO mappings."""
+    # MONDO ontology
+    mondo_obo_path = conf.paths.mondo_obo_path
+    mondo_obo_url = "https://github.com/monarch-initiative/mondo/releases/latest/download/mondo.obo"
+
+    if force or not _validate_mondo_obo(mondo_obo_path):
+        if mondo_obo_path.exists() and not _validate_mondo_obo(mondo_obo_path):
+            _logger.warning("Existing mondo.obo contains Gene Ontology, not MONDO. Re-downloading...")
+        _download_file(mondo_obo_url, mondo_obo_path, "MONDO ontology (mondo.obo)")
+    else:
+        _logger.info("MONDO ontology already exists at %s (use --force to re-download)", mondo_obo_path)
+
+    # MONDO-EFO mappings
+    mondo_efo_path = conf.paths.mappings.mondo_efo_path
+    mondo_efo_url = (
+        "https://raw.githubusercontent.com/EBISPOT/efo/master/src/ontology/components/mondo_efo_mappings.tsv"
+    )
+
+    if force or not mondo_efo_path.exists():
+        _download_file(mondo_efo_url, mondo_efo_path, "MONDO-EFO mappings (mondo_efo_mappings.tsv)")
+    else:
+        _logger.info("MONDO-EFO mappings already exist at %s (use --force to re-download)", mondo_efo_path)

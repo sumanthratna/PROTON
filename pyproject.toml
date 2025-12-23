@@ -18,7 +18,6 @@ dependencies = [
     "cellxgene-census>=1.17.0",
     "fqdn>=1.5.1",
     "getsequence>=2.2.1",
-    "goatools>=1.4.12",
     "gseapy>=1.1.10",
     "igraph>=1.0.0",
     "isoduration>=20.11.0",
@@ -54,6 +53,7 @@ dependencies = [
     "polars",
     "langchain-google-genai>=4.1.2",
     "langchain>=1.2.0",
+    "pronto>=2.7.2",
 ]
 
 [project.urls]
