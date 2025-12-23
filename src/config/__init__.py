@@ -16,6 +16,7 @@ from .models import (
     FinetuneConfig,
     FixedParams,
     GraphSampling,
+    LLMConfig,
     LoggingConfig,
     MiscFiguresConfig,
     NeuroKGConfig,
@@ -72,6 +73,7 @@ class Config(BaseSettings):
 
     AZURE_OPENAI_ENDPOINT: str | None = Field(default=None, description="The endpoint for the Azure OpenAI service.")
     AZURE_OPENAI_API_KEY: str | None = Field(default=None, description="The API key for the Azure OpenAI service.")
+    GOOGLE_API_KEY: str | None = Field(default=None, description="The API key for Google Gemini API.")
 
     seed: int
     logging: LoggingConfig = Field(default_factory=LoggingConfig)
@@ -84,6 +86,7 @@ class Config(BaseSettings):
     finetune: FinetuneConfig
     sweep: SweepConfig
     misc_figures: MiscFiguresConfig
+    llm: LLMConfig = Field(default_factory=LLMConfig)
 
     @classmethod
     def settings_customise_sources(

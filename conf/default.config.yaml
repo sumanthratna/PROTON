@@ -226,4 +226,12 @@ misc_figures:
     "bipolar disorder": 39528
     "Parkinson's disease": 39579
 
+llm:
+  # LLM configuration for disease split review and other tasks
+  # Supported models: gemini-2.5-flash, gemini-2.5-pro, gemini-3-pro-preview
+  # Set GOOGLE_API_KEY environment variable for authentication
+  model_name: "gemini-2.5-pro"
+  temperature: 0.5
+  max_tokens: 10
+
 seed: 42

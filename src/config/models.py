@@ -275,3 +275,14 @@ class LoggingConfig(BaseModel):
     handlers: dict[str, Any]
     loggers: dict[str, Any]
     root: dict[str, Any]
+
+
+class LLMConfig(BaseModel):
+    """Configuration for LLM used in disease split review and other tasks."""
+
+    model_name: str = Field(
+        default="gemini-3-pro-preview",
+        description="Model name for the LLM. Examples: gemini-2.5-flash, gemini-2.5-pro, gemini-3-pro-preview",
+    )
+    temperature: float = Field(default=0.5, description="Temperature for LLM sampling.")
+    max_tokens: int = Field(default=10, description="Maximum tokens for LLM response.")

@@ -52,6 +52,8 @@ dependencies = [
     "wandb>=0.22.2",
     "webcolors>=24.11.1",
     "polars",
+    "langchain-google-genai>=4.1.2",
+    "langchain>=1.2.0",
 ]
 
 [project.urls]
