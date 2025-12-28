@@ -286,3 +286,22 @@ class LLMConfig(BaseModel):
     )
     temperature: float = Field(default=0.5, description="Temperature for LLM sampling.")
     max_tokens: int = Field(default=10, description="Maximum tokens for LLM response.")
+
+
+class EdgeSignsConfig(BaseModel):
+    """Configuration for signed edge scoring in link prediction.
+
+    Signs modulate link prediction scores: +1 for beneficial/therapeutic relationships,
+    -1 for harmful/inhibitory relationships. This enables the model to distinguish
+    between positive associations (e.g., drug treats disease) and negative associations
+    (e.g., drug contraindicated for disease).
+    """
+
+    enabled: bool = Field(
+        default=False,
+        description="Enable signed edge scoring. When True, link prediction scores are multiplied by edge signs.",
+    )
+    mapping: dict[str, int] = Field(
+        default_factory=dict,
+        description="Mapping from relation name to sign (+1, -1, or 0). Unmapped relations default to +1.",
+    )

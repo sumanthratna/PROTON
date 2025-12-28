@@ -123,7 +123,15 @@ class HGT(pl.LightningModule):
         else:
             raise ValueError("Number of layers must be 2 or 3.")
 
-        self.decoder = BilinearDecoder(self.num_etypes, self.output_dim * self.num_heads)
+        self.decoder = BilinearDecoder(
+            self.num_etypes,
+            self.output_dim * self.num_heads,
+            edge_signs_enabled=conf.edge_signs.enabled,
+            edge_sign_mapping=conf.edge_signs.mapping,
+        )
+
+        if conf.edge_signs.enabled:
+            _logger.info("Edge sign modulation enabled with %d mapped relations", len(conf.edge_signs.mapping))
 
         self.val_step_metrics = []
         self.test_step_metrics = []
@@ -712,5 +720,12 @@ class HGT(pl.LightningModule):
             src_embeddings.to(self.device) * decoder[edge_type_index].to(self.device) * dst_embeddings.to(self.device),
             dim=1,
         )
+
+        # Apply edge sign modulation if enabled
+        if self.decoder.edge_signs_enabled:
+            relation = query_edge_type[1]  # Extract relation name from (src_type, relation, dst_type)
+            sign = self.decoder._get_edge_sign(relation)
+            scores = scores * sign
+
         scores = torch.sigmoid(scores)
         return scores

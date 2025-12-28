@@ -235,3 +235,51 @@ llm:
   max_tokens: 10
 
 seed: 42
+
+# Edge sign configuration for signed message passing
+# Signs modulate link prediction scores: +1 for beneficial, -1 for harmful relationships
+edge_signs:
+  enabled: true  # Set to true to enable signed edge scoring
+  mapping:
+    # Positive edges (+1): beneficial/therapeutic relationships
+    indication: 1
+    expression_present: 1
+    phenotype_present: 1
+    ppi: 1
+    synergistic_interaction: 1
+    target: 1
+    associated_with: 1
+    cell_type_upregulated_PD: 1
+    cell_type_present: 1
+    expression_upregulated: 1
+    cell_type_marker_gene: 1
+    cell_subtype_marker_gene: 1
+    cell_subtype_upregulated_PD: 1
+    anatomy_protein_present: 1
+    disease_phenotype_positive: 1
+    disease_protein_positive: 1
+    strong_clinical_evidence: 1
+    weak_clinical_evidence: 1
+    off_label_use: 1
+
+    # Negative edges (-1): harmful/inhibitory relationships
+    contraindication: -1
+    side_effect: -1
+    phenotype_absent: -1
+    expression_absent: -1
+    expression_downregulated: -1
+    cell_type_downregulated_PD: -1
+    cell_subtype_downregulated_PD: -1
+    exposure_disease: -1
+    anatomy_protein_absent: -1
+    disease_phenotype_negative: -1
+    disease_protein_negative: -1
+
+    # Neutral edges (1): context-dependent, default to positive
+    transporter: 1
+    linked_to: 1
+    parent_child: 1
+    enzyme: 1
+    carrier: 1
+    interacts_with: 1
+    clinical_candidate: 1

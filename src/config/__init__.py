@@ -12,6 +12,7 @@ from src.constants import DEFAULT_CONFIG_PATH
 from .models import (
     BatchSizes,
     EdgeSets,
+    EdgeSignsConfig,
     ExplainerConfig,
     FinetuneConfig,
     FixedParams,
@@ -87,6 +88,7 @@ class Config(BaseSettings):
     sweep: SweepConfig
     misc_figures: MiscFiguresConfig
     llm: LLMConfig = Field(default_factory=LLMConfig)
+    edge_signs: EdgeSignsConfig = Field(default_factory=EdgeSignsConfig)
 
     @classmethod
     def settings_customise_sources(
