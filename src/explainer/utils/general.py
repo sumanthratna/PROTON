@@ -2,8 +2,8 @@ import logging
 
 import dgl
 import torch
-import wandb
 
+import wandb
 from src.config import conf
 from src.constants import TORCH_DEVICE
 from src.models import HGT
@@ -21,7 +21,7 @@ def load_model_from_checkpoint(kg):
     model = HGT.load_from_checkpoint(
         checkpoint_path=str(checkpoint_path),
         kg=kg,
-        hparams=conf.neurokg,
+        hparams=conf.proton,
         strict=False,
     )
     model.eval()

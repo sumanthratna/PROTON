@@ -17,6 +17,10 @@ from src.config import conf
 from src.dataloaders import create_dataloaders, load_graph, partition_graph
 from src.models import HGT
 
+# Enable Tensor Core optimizations for supported GPUs (RTX 30xx, 40xx, A100, etc.)
+# This trades off some precision for ~10-30% speedup
+torch.set_float32_matmul_precision("high")
+
 _logger = logging.getLogger(__name__)
 
 
@@ -67,7 +71,7 @@ def _setup_run(kg: dgl.DGLGraph) -> tuple[HGT, WandbLogger, str]:
         model = HGT.load_from_checkpoint(
             checkpoint_path=str(conf.paths.checkpoint.checkpoint_path),
             kg=kg,
-            hparams=conf.neurokg,
+            hparams=conf.proton,
             strict=False,
         )
     else:
@@ -76,7 +80,7 @@ def _setup_run(kg: dgl.DGLGraph) -> tuple[HGT, WandbLogger, str]:
         run_name = f"{run_uuid}{curr_time.strftime(' on %m/%d/%Y')}"
         run_id = f"{curr_time.strftime('%Y-%m-%d')}_{run_uuid}"
         resume_status = "allow"
-        model = HGT(kg=kg, hparams=conf.neurokg)
+        model = HGT(kg=kg, hparams=conf.proton)
 
     project_name = conf.wandb.splits_project_name if conf.neurokg.test_set else conf.wandb.pretrain_project_name
     if conf.neurokg.test_set:
@@ -168,6 +172,21 @@ def pretrain():
     callbacks = _setup_callbacks(run_id, val_dataloader is not None)
     trainer = _get_trainer(wandb_logger, callbacks, val_dataloader is not None)
 
+    # Use DGL CPU affinity context manager for optimized CPU core allocation
+    # See: https://www.dgl.ai/dgl_docs/tutorials/cpu/cpu_best_practises.html
+    num_workers = conf.proton.training.num_workers
+    use_cpu_affinity = num_workers > 0 and train_dataloader is not None
+
+    if use_cpu_affinity:
+        _logger.info(f"Enabling DGL CPU affinity optimization (num_workers={num_workers})")
+        with train_dataloader.enable_cpu_affinity():
+            _run_training(trainer, model, train_dataloader, val_dataloader, test_dataloader)
+    else:
+        _run_training(trainer, model, train_dataloader, val_dataloader, test_dataloader)
+
+
+def _run_training(trainer, model, train_dataloader, val_dataloader, test_dataloader):
+    """Execute the training, validation, and testing loops."""
     if val_dataloader:
         trainer.fit(model, train_dataloader, val_dataloader)
     else:

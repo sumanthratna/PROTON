@@ -298,6 +298,22 @@ def _create_dataloader(
     edge_sampler = dgl.dataloading.as_edge_prediction_sampler(
         sampler, exclude="reverse_types", reverse_etypes=reverse_edge_dict, negative_sampler=neg_sampler
     )
-    return dgl.dataloading.DataLoader(
-        kg, eids, edge_sampler, batch_size=batch_size, shuffle=True, drop_last=False, num_workers=num_workers
+
+    # Use UVA (Unified Virtual Addressing) for faster GPU-CPU data transfer when available
+    use_uva = torch.cuda.is_available() and num_workers == 0
+
+    dataloader = dgl.dataloading.DataLoader(
+        kg,
+        eids,
+        edge_sampler,
+        batch_size=batch_size,
+        shuffle=True,
+        drop_last=False,
+        num_workers=num_workers,
+        use_uva=use_uva,
     )
+
+    if use_uva:
+        logger.debug("Using UVA (Unified Virtual Addressing) for dataloader")
+
+    return dataloader

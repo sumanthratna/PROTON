@@ -29,7 +29,7 @@ def save_embeddings() -> None:
     model: HGT = HGT.load_from_checkpoint(  # type: ignore[call-arg]
         checkpoint_path=str(checkpoint_path),
         kg=kg,
-        hparams=conf.neurokg,
+        hparams=conf.proton,
         strict=False,
     )
     model.eval()
@@ -93,7 +93,7 @@ def save_embedding_layer() -> None:
     model = HGT.load_from_checkpoint(  # type: ignore[call-arg]
         checkpoint_path=str(checkpoint_path),
         kg=kg,
-        hparams=conf.neurokg,
+        hparams=conf.proton,
         strict=False,
     )
     model.eval()
@@ -130,7 +130,7 @@ def save_decoder() -> None:
     model = HGT.load_from_checkpoint(  # type: ignore[call-arg]
         checkpoint_path=str(checkpoint_path),
         kg=kg,
-        hparams=conf.neurokg,
+        hparams=conf.proton,
         strict=False,
     )
     model.eval()

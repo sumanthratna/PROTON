@@ -5,10 +5,10 @@ import numpy as np
 import pytorch_lightning as pl
 import torch
 import torch.nn.functional as F
-import wandb
 from dgl.nn.pytorch.conv import HGTConv
 from torch import nn
 
+import wandb
 from src.config import ProtonConfig, conf
 from src.samplers.fixed_sampler import FixedSampler
 from src.utils import calculate_metrics
@@ -259,7 +259,7 @@ class HGT(pl.LightningModule):
         binary_preds[:, 1] = all_preds
 
         thresholded_preds = (all_preds > self.pred_threshold).astype(int)
-        self._logger.experiment.log({
+        self.logger.experiment.log({
             "val/confusion_matrix": wandb.plot.confusion_matrix(
                 y_true=all_targets,
                 preds=thresholded_preds,
@@ -267,7 +267,7 @@ class HGT(pl.LightningModule):
             )
         })
 
-        self._logger.experiment.log({
+        self.logger.experiment.log({
             "val/roc_curve": wandb.plot.roc_curve(
                 y_true=all_targets,
                 y_probas=binary_preds,
@@ -275,7 +275,7 @@ class HGT(pl.LightningModule):
             )
         })
 
-        self._logger.experiment.log({
+        self.logger.experiment.log({
             "val/pr_curve": wandb.plot.pr_curve(
                 y_true=all_targets,
                 y_probas=binary_preds,
@@ -326,7 +326,7 @@ class HGT(pl.LightningModule):
         binary_preds[:, 1] = all_preds
 
         thresholded_preds = (all_preds > self.pred_threshold).astype(int)
-        self._logger.experiment.log({
+        self.logger.experiment.log({
             "test/confusion_matrix": wandb.plot.confusion_matrix(
                 y_true=all_targets,
                 preds=thresholded_preds,
@@ -334,7 +334,7 @@ class HGT(pl.LightningModule):
             )
         })
 
-        self._logger.experiment.log({
+        self.logger.experiment.log({
             "test/roc_curve": wandb.plot.roc_curve(
                 y_true=all_targets,
                 y_probas=binary_preds,
@@ -342,7 +342,7 @@ class HGT(pl.LightningModule):
             )
         })
 
-        self._logger.experiment.log({
+        self.logger.experiment.log({
             "test/pr_curve": wandb.plot.pr_curve(
                 y_true=all_targets,
                 y_probas=binary_preds,
